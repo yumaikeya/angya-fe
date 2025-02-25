@@ -1,0 +1,28 @@
+{
+  "common": {
+    "email": "Email",
+    "name": "Name",
+    "password": "Password",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "from": "From",
+    "search": "Search"
+  },
+  "users": {
+    "forgot_password": "Forgot password?",
+    "min_password": "Password must contain at least 8 characters",
+    "logout": "Logout",
+    "login": "Sign in your account",
+    "remember_me": "Remember me",
+    "sign_in": "Sign in",
+    "invalid_email": "Invalid email",
+    "invalid_password": "Invalid password",
+    "guest": "Guest",
+    "incorrect_username_or_password": "Incorrect username or password."
+  },
+  "headers": {
+    "viewer": "Viewer",
+    "planner": "Planner",
+    "user_management": "User Management"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "common": {
+    "email": "メール",
+    "name": "名前",
+    "password": "パスワード",
+    "home": "ホーム",
+    "dashboard": "ダッシュボード",
+    "from": "From",
+    "search": "検索"
+  },
+  "users": {
+    "forgot_password": "パスワードをお忘れですか？",
+    "min_password": "パスワードは8文字以上である必要があります",
+    "logout": "ログアウト",
+    "login": "アカウントにログイン",
+    "remember_me": "このアカウントを記憶する",
+    "sign_in": "ログイン",
+    "invalid_email": "無効なメールアドレス",
+    "invalid_password": "無効なパスワード",
+    "guest": "ゲスト",
+    "incorrect_username_or_password": "ユーザー名またはパスワードが違います。"
+  },
+  "headers": {
+    "viewer": "Viewer",
+    "planner": "Planner",
+    "user_management": "ユーザー管理"
+  }
+}

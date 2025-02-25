@@ -1,0 +1,27 @@
+services:
+  app:
+    container_name: fe
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 3050:5173
+    command: [ "bun", "run", "dev", "--host" ]
+  sb:
+    container_name: sb
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 3051:6006
+    command: [ "bun", "run", "sb" ]
