@@ -36,18 +36,16 @@ export const createPhotoRequest = async (url: string, { arg }: { arg: PhotoReque
 export const useRegisterPhoto = (req: PhotoRequest) => {
   fetch(API_EP+'/api/photos', {
     method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(req)
-})
-.then(response => response.json())
-.then(data => {
+  })
+  .then(response => response.json())
+  .then(data => {
     console.log('Success:', data);
-})
-.catch((error) => {
+  })
+  .catch((error) => {
     console.error('Error:', error);
-});
+  });
 }
 
 export const useListPhotos = (): PhotosResponse => {

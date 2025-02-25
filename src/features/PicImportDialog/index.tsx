@@ -34,6 +34,7 @@ const PicImportDrawer = ({open, setOpen}: Props) => {
                         reader.addEventListener('load', () => { // ここで写真load時に発火するeventを仕込む
                             if (reader.result) {
                                 useRegisterPhoto({src: reader.result, spot: selectedTag})
+                                setOpen(false)
                             }
                         })
 

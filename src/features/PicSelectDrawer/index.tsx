@@ -8,15 +8,16 @@ type Props = {
     open: boolean
     setOpen?: (open: boolean) => void
     title: string
+    selectedPhoto: {id: string | null, src: string | null, spot: string | null}
+    setSelectedPhoto: (photo: {id: string | null, src: string | null, spot: string | null}) => void
 }
 
-const PicDetailDrawer = ({open, setOpen, title}: Props) => {
+const PicSelectDrawer = ({open, setOpen, title, selectedPhoto, setSelectedPhoto}: Props) => {
   const photos = useListPhotos()
-  const [selectedPhotoId, setSelectedPhotoId] = useState("")
   const photoLists = photos.data && photos.data.map((item) => item)
 
   useEffect(() => {
-    !open && setSelectedPhotoId("") // drawerを開くたびにselectedPhotoを初期化
+    !open && setSelectedPhoto({id: null, src: null, spot: null}) // drawerを開くたびにselectedPhotoを初期化
   }, [open])
 
   return (
@@ -24,11 +25,11 @@ const PicDetailDrawer = ({open, setOpen, title}: Props) => {
     <SimpleGrid columns={2} gap="1">
     <For each={photoLists}>
       {
-        ({id, src, mimeType, spot }) => <Box key={id} position={"relative"}>
-          <Show when={id === selectedPhotoId}>
+        ({id, src, spot }) => <Box key={id} position={"relative"}>
+          <Show when={id === selectedPhoto.id}>
             <Box position={"absolute"} top={"25px"} left={"50px"}><SlCheck size={"50px"} color={"white"} valiant={"outline"}/></Box>
           </Show>
-          <Image src={"data:"+mimeType+";base64,"+src} onClick={() => setSelectedPhotoId(id)} />
+          <Image src={src} onClick={() => setSelectedPhoto({id: id, src: src, spot: spot})} />
           <Badge size={"sm"} colorPalette={"teal"} position={"absolute"} bottom={0} color={"white"}>{spot}</Badge>
         </Box>
       }
@@ -38,4 +39,4 @@ const PicDetailDrawer = ({open, setOpen, title}: Props) => {
   )
 }
 
-export default PicDetailDrawer
+export default PicSelectDrawer
