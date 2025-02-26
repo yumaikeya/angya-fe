@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { Image, SimpleGrid, For, Badge, Box, Show } from "@chakra-ui/react"
 import RightDrawer from "@/components/BasicDrawer/rightDrawer"
 import { useListPhotos } from "@/apis/photo"

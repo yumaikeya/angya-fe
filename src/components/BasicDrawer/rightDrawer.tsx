@@ -1,7 +1,6 @@
 import React from "react"
 import {
   DrawerBody,
-  DrawerCloseTrigger,
   DrawerContent,
   DrawerHeader,
   DrawerRoot,
@@ -18,7 +17,7 @@ type Props = {
 const RightDrawer = ({open, setOpen, children, title}: Props) => {
 
   return (
-    <DrawerRoot open={open} onOpenChange={(e) => setOpen(e.open)} >
+    <DrawerRoot open={open} onOpenChange={(e) => setOpen(e.open)} contained={false} >
       <DrawerContent>
         <DrawerHeader px={2}>
           <DrawerTitle>{title}</DrawerTitle>
@@ -26,7 +25,6 @@ const RightDrawer = ({open, setOpen, children, title}: Props) => {
         <DrawerBody px={2}>
           {children}
         </DrawerBody>
-        <DrawerCloseTrigger />
       </DrawerContent>
     </DrawerRoot>
   )

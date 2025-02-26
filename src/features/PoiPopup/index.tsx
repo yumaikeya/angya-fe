@@ -1,10 +1,11 @@
 import MapPopup from "@/components/BasicMapPopup"
-import { Image, Box } from "@chakra-ui/react"
+import { Image, Badge, Box } from "@chakra-ui/react"
 
 
   type Props = {
     latitude: number
     longitude: number
+    spot?: string
     anchor?: string
     selectedPhoto: {id: string | null, src: string | null, spot: string | null}
     onClose?: (e: any) => void
@@ -12,10 +13,11 @@ import { Image, Box } from "@chakra-ui/react"
 }
 
 const PoiPopup = ({latitude, longitude, onClose, selectedPhoto}: Props) => {
+    
     return (
         <MapPopup latitude={latitude} longitude={longitude} width={"15vw"} onClose={onClose}>
             <Image src={selectedPhoto.id ? selectedPhoto.src : "/black.png"}/>
-            <Box height={"50px"} pt={2} color={"#000"}>hello</Box>
+            {selectedPhoto.spot ? <Badge my={2} colorPalette={"teal"} color={"white"}>{selectedPhoto.spot}</Badge> : <Box height={"20px"} my={2}></Box>}
         </MapPopup>
     )
 }

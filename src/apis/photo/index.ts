@@ -7,26 +7,17 @@ type PhotoRequest = {
   spot: string
 }
 
-type PhotoResponse = {
-  isLoading: boolean
-  error: boolean
-  data : {
-      id: string
-      src: string
-      spot: string
-      createdAt: string
-  } | null
+export type Photo = {
+    id: string
+    src: string
+    spot: string
+    createdAt: string
 }
 
 type PhotosResponse = {
     isLoading: boolean
     error: boolean
-    data : {
-        id: string
-        src: string
-        spot: string
-        createdAt: string
-    }[] | []
+    data : Photo[] | []
 }
 
 export const createPhotoRequest = async (url: string, { arg }: { arg: PhotoRequest }) => {
@@ -49,7 +40,7 @@ export const useRegisterPhoto = (req: PhotoRequest) => {
 }
 
 export const useListPhotos = (): PhotosResponse => {
-  const { data, error, isLoading }: {data: {id: string, src: string, spot: string, createdAt: string}[] | [], error: boolean, isLoading: boolean} = useSWR(API_EP+'/api/photos', fetcher)
+  const { data, error, isLoading }: {data: {id: string, src: string, spot: string, createdAt: string}[] | [], error: boolean, isLoading: boolean} = useSWR(API_EP+'/api/photos', fetcher, { refreshInterval: 15000 })
  
   if (error) return {isLoading: false, error: true, data: []}
   if (isLoading) return {isLoading: true, error: false, data: []}

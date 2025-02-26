@@ -22,6 +22,8 @@ import { Popup, PopupEvent } from 'react-map-gl/maplibre'
           onClose={onClose}
           onClick={onClick}
           style={{width, minWidth: "150px"}}
+          closeButton={false}
+          closeOnClick={false}
         >
           {children}
         </Popup>
