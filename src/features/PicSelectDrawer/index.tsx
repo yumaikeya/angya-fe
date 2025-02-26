@@ -3,16 +3,19 @@ import { Image, SimpleGrid, For, Badge, Box, Show } from "@chakra-ui/react"
 import RightDrawer from "@/components/BasicDrawer/rightDrawer"
 import { useListPhotos } from "@/apis/photo"
 import { SlCheck } from "react-icons/sl";
+import { useRegisterPoi } from "@/apis/poi"
 
 type Props = {
     open: boolean
     setOpen?: (open: boolean) => void
     title: string
+    selectedLongitude: number
+    selectedLatitude: number
     selectedPhoto: {id: string | null, src: string | null, spot: string | null}
     setSelectedPhoto: (photo: {id: string | null, src: string | null, spot: string | null}) => void
 }
 
-const PicSelectDrawer = ({open, setOpen, title, selectedPhoto, setSelectedPhoto}: Props) => {
+const PicSelectDrawer = ({open, setOpen, title, selectedPhoto, setSelectedPhoto, selectedLongitude, selectedLatitude}: Props) => {
   const photos = useListPhotos()
   const photoLists = photos.data && photos.data.map((item) => item)
 
@@ -21,8 +24,17 @@ const PicSelectDrawer = ({open, setOpen, title, selectedPhoto, setSelectedPhoto}
   }, [open])
 
   return (
-  <RightDrawer open={open} setOpen={setOpen} title={title}>
-    <SimpleGrid columns={2} gap="1">
+  <RightDrawer
+    open={open}
+    setOpen={({open}) => {
+      setOpen(open)
+      if (selectedPhoto.id) {
+        useRegisterPoi({photoId: selectedPhoto.id, latitude: selectedLatitude, longitude: selectedLongitude})
+      }
+    }}
+    title={title}
+  >
+    <SimpleGrid columns={2} gap={1}>
     <For each={photoLists}>
       {
         ({id, src, spot }) => <Box key={id} position={"relative"}>

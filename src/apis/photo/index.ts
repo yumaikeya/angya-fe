@@ -20,10 +20,6 @@ type PhotosResponse = {
     data : Photo[] | []
 }
 
-export const createPhotoRequest = async (url: string, { arg }: { arg: PhotoRequest }) => {
-  await fetch(url, { method: "POST", body: JSON.stringify(arg) }).then((res) => res.json());
-}
-
 export const useRegisterPhoto = (req: PhotoRequest) => {
   fetch(API_EP+'/api/photos', {
     method: 'POST',

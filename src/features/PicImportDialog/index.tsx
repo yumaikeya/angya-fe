@@ -25,7 +25,7 @@ const PicImportDrawer = ({open, setOpen}: Props) => {
     })
 
     return (
-        <CenterLgDialog open={open} setOpen={setOpen} title={"Import your images"} trigger={<PlusButton onClick={setOpen} />}>
+        <CenterLgDialog open={open} setOpen={setOpen} title={"Import your photos"} trigger={<PlusButton onClick={setOpen} />}>
             <TagList tags={tagList} selected={selectedTag} onClick={setSelectedTag}/>
             <Show when={selectedTag != ""}>
                 <ImageUploader onAccept={({files}) => {     

@@ -1,5 +1,6 @@
 import React from "react"
 import { Popup, PopupEvent } from 'react-map-gl/maplibre'
+import { Box } from "@chakra-ui/react"
 
   type Props = {
     latitude: number
@@ -14,19 +15,20 @@ import { Popup, PopupEvent } from 'react-map-gl/maplibre'
   const MapPopup = ({latitude, longitude, anchor = "bottom", onOpen, onClose, onClick, width, children}: Props) => {
 
       return (
+        <Box onClick={onClick}>
         <Popup
           longitude={longitude}
           latitude={latitude}
           anchor={anchor}
           onOpen={onOpen}
           onClose={onClose}
-          onClick={onClick}
-          style={{width, minWidth: "150px"}}
+          style={{width, maxWidth: "1000px", minWidth: "80px"}}
           closeButton={false}
           closeOnClick={false}
         >
           {children}
         </Popup>
+        </Box>
       )
 }    
   
